@@ -8,6 +8,7 @@ using OSGeo.MapGuide;
 
 using Autodesk.Gis.Map.Platform;
 using Autodesk.Gis.Map.Platform.Utils;
+using System.Xml;
 
 namespace MapResourceExplorer.Model
 {
@@ -37,6 +38,20 @@ namespace MapResourceExplorer.Model
 
         #endregion
 
+
+        private MgResourceService _resourceService;
+        public MgResourceService ResourceService
+        {
+            get
+            {
+                if (_resourceService == null)
+                {
+                    _resourceService = AcMapServiceFactory.GetService(MgServiceType.ResourceService) as MgResourceService;
+                }
+                return _resourceService;
+            }
+        }
+
         /// <summary>
         /// Get valid resource type in Map3D
         /// --------------------------------------
@@ -52,6 +67,59 @@ namespace MapResourceExplorer.Model
             resourceTypes.Add(MgResourceType.LayerDefinition);
             resourceTypes.Add(MgResourceType.SymbolDefinition);
             return resourceTypes;
+        }
+
+
+        public Dictionary<string, string> GetResourcesByType(string resourceType)
+        {
+            //TODO:
+            if (!IsValidMap3DResourceType(resourceType))
+            {
+                throw new ApplicationException("unspported resource type by Map3D");
+            }
+
+            Dictionary<string, string> resources = new Dictionary<string, string>();
+
+            MgResourceIdentifier rootResId = new MgResourceIdentifier(@"Library://");
+            MgByteReader reader = ResourceService.EnumerateResources(rootResId, -1, resourceType.ToString());
+
+            //Convert to string 
+            String resStr = reader.ToString();
+
+            //Load into XML document so we can parse and get the names of the maps
+            XmlDocument doc = new XmlDocument();
+            doc.LoadXml(resStr);
+
+            //let's extract the map names and list them        
+            XmlNodeList resIdNodeList;
+            XmlElement root = doc.DocumentElement;
+            resIdNodeList = root.SelectNodes("//ResourceId");
+            int resCount = resIdNodeList.Count;
+            for (int i = 0; i < resCount; i++)
+            {
+                XmlNode resIdNode = resIdNodeList.Item(i);
+                String resId = resIdNode.InnerText;
+                int index1 = resId.LastIndexOf('/') + 1;
+                int index2 = resId.IndexOf(resourceType) - 2;
+                int length = index2 - index1 + 1;
+                string resName = resId.Substring(index1, length);
+                resources.Add(resName, resId);
+
+            }
+
+
+            return resources;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="resourceType"></param>
+        /// <returns></returns>
+        private bool IsValidMap3DResourceType(string resourceType)
+        {
+            //TODO: check resource type is valid or not
+            return true;
         }
 
     }
