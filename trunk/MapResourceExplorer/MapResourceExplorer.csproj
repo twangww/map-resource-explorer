@@ -41,9 +41,35 @@
       <HintPath>..\..\Program Files\Autodesk\AutoCAD Civil 3D 2011\acmgd.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Autodesk.Gis.Map.Shared, Version=14.0.45.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Program Files\Autodesk\AutoCAD Civil 3D 2011\Autodesk.Gis.Map.Shared.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Autodesk.Map.Platform, Version=14.0.45.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Program Files\Autodesk\AutoCAD Civil 3D 2011\Autodesk.Map.Platform.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Autodesk.Map.Platform.Core, Version=14.0.45.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Program Files\Autodesk\AutoCAD Civil 3D 2011\Autodesk.Map.Platform.Core.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Autodesk.Map.Platform.Utils, Version=14.0.45.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Program Files\Autodesk\AutoCAD Civil 3D 2011\Autodesk.Map.Platform.Utils.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="OSGeo.MapGuide.Foundation, Version=2.2.0.4141, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Program Files\Autodesk\AutoCAD Civil 3D 2011\OSGeo.MapGuide.Foundation.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="OSGeo.MapGuide.PlatformBase, Version=2.2.0.4141, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Program Files\Autodesk\AutoCAD Civil 3D 2011\OSGeo.MapGuide.PlatformBase.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="PresentationCore">
       <RequiredTargetFramework>3.0</RequiredTargetFramework>
@@ -77,6 +103,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Commands.cs" />
+    <Compile Include="Model\ResourceManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UI\ExplorerForm.xaml.cs">
       <DependentUpon>ExplorerForm.xaml</DependentUpon>
@@ -97,12 +124,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ReadMe.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\Map ObjectARX SDK 2011\Map Samples\Platform\Platform.Samples.Util\Platform.Samples.Util.csproj">
-      <Project>{D55B1429-340E-455F-96E2-ACE21D3E8997}</Project>
-      <Name>Platform.Samples.Util</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
