@@ -7,8 +7,8 @@ using Autodesk.AutoCAD.ApplicationServices;
 using Autodesk.AutoCAD.EditorInput;
 using Autodesk.AutoCAD.Runtime;
 
-using Autodesk.GisPlatformSamples.Common;
 using MapResourceExplorer.UI;
+using Autodesk.Gis.Map.Platform.Utils;
 
 namespace MapResourceExplorer
 {

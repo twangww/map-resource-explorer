@@ -5,7 +5,7 @@
     <Grid>
         <TreeView Margin="12,12,23,52" Name="treeView1">
             <TreeViewItem Header="FeatureSource" >
-                <TreeViewItem Header="Library://1....."></TreeViewItem>
+                <TreeViewItem Header="Library://1....." ToolTip="" ></TreeViewItem>
             </TreeViewItem>
             <TreeViewItem Header="Layer Definition">
                 <TreeViewItem Header="Library://1....."></TreeViewItem>

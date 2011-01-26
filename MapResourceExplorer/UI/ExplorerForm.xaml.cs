@@ -12,6 +12,9 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+using MapResourceExplorer.Model;
+using System.Collections;
+
 namespace MapResourceExplorer.UI
 {
     /// <summary>
@@ -27,6 +30,32 @@ namespace MapResourceExplorer.UI
         internal void ForceRefresh()
         {
             //TODO: Refresh all the resources
+
+            BindTreeView(treeView1);
         }
+
+
+        private void BindTreeView(TreeView tree)
+        {
+            tree.Items.Clear();
+
+            ResourceManager resourceMgr = ResourceManager.Instance;
+
+             ArrayList resourceTypes = resourceMgr.GetResourceAllTypes();
+            for (int i = 0; i < resourceTypes.Count; i++)
+            {
+                TreeViewItem resourceTypeitem = new TreeViewItem();
+                resourceTypeitem.Header = resourceTypes[i].ToString();
+                resourceTypeitem.ToolTip = resourceTypes[i].ToString();
+                //TODO: bind resource to resourceItemType
+                //  resourceTypeitem.Items.Add()
+
+                tree.Items.Add(resourceTypeitem);
+                
+            }
+        }
+
+
+
     }
 }
