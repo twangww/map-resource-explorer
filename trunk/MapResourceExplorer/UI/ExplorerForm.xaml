@@ -3,7 +3,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     Height="300" Width="300">
     <Grid>
-        <TreeView Margin="12,12,23,52" Name="treeView1">
+        <TreeView Margin="12,12,12,52" Name="treeView1">
             <TreeViewItem Header="FeatureSource" >
                 <TreeViewItem Header="Library://1....." ToolTip="" ></TreeViewItem>
             </TreeViewItem>

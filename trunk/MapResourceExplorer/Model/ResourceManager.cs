@@ -112,14 +112,20 @@ namespace MapResourceExplorer.Model
         }
 
         /// <summary>
-        /// 
+        /// check resource type is valid in Map 3D or not
         /// </summary>
         /// <param name="resourceType"></param>
         /// <returns></returns>
         private bool IsValidMap3DResourceType(string resourceType)
         {
-            //TODO: check resource type is valid or not
-            return true;
+            if (resourceType == MgResourceType.FeatureSource || resourceType == MgResourceType.LayerDefinition || resourceType == MgResourceType.SymbolDefinition)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
     }
