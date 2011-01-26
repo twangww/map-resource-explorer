@@ -41,20 +41,15 @@ namespace MapResourceExplorer.UI
 
             ResourceManager resourceMgr = ResourceManager.Instance;
 
-            ArrayList resourceTypes = resourceMgr.GetResourceAllTypes();
-            for (int i = 0; i < resourceTypes.Count; i++)
+            Dictionary<string,string> resourceTypes = resourceMgr.GetResourceAllTypes();
+            foreach (var resType in resourceTypes)
             {
                 TreeViewItem resourceTypeitem = new TreeViewItem();
-                resourceTypeitem.Header = resourceTypes[i].ToString();
-                resourceTypeitem.ToolTip = resourceTypes[i].ToString();
-                //TODO: bind resource to resourceItemType
-                //  resourceTypeitem.Items.Add()
-                Dictionary<string, string> resList = resourceMgr.GetResourcesByType(resourceTypes[i].ToString());
-                //for (int i = 0; i < resList.Count; i++)
-                //{
-                //    TreeViewItem resItem = new TreeViewItem();
-                //    resItem.Header = resList.
-                //}
+                resourceTypeitem.Header = resType.Key;
+                resourceTypeitem.ToolTip = resType.Value;
+                //Bind resource to resourceItemType
+                Dictionary<string, string> resList = resourceMgr.GetResourcesByType(resType.Key);
+               
                 foreach (var item in resList)
                 {
                     TreeViewItem resItem = new TreeViewItem();
@@ -64,8 +59,8 @@ namespace MapResourceExplorer.UI
                 }
 
                 tree.Items.Add(resourceTypeitem);
-
             }
+          
         }
 
 

@@ -60,12 +60,12 @@ namespace MapResourceExplorer.Model
         /// SymbolDefinition Defines a symbol to be displayed on a map. 
         /// </summary>
         /// <returns></returns>
-        public ArrayList GetResourceAllTypes()
+        public Dictionary<string,string> GetResourceAllTypes()
         {
-            ArrayList resourceTypes = new ArrayList();
-            resourceTypes.Add(MgResourceType.FeatureSource);
-            resourceTypes.Add(MgResourceType.LayerDefinition);
-            resourceTypes.Add(MgResourceType.SymbolDefinition);
+            Dictionary<string, string> resourceTypes = new Dictionary<string, string>();
+            resourceTypes.Add(MgResourceType.FeatureSource, "Contains the required parameters for connecting to a geospatial feature source.");
+            resourceTypes.Add(MgResourceType.LayerDefinition, "Contains the required parameters for displaying and styling a layer. Layers can be drawing layers, vector layers, or grid (raster) layers.");
+            resourceTypes.Add(MgResourceType.SymbolDefinition, "Defines a symbol to be displayed on a map.");
             return resourceTypes;
         }
 
