@@ -37,7 +37,14 @@ namespace MapResourceExplorer.Model
 
         #endregion
 
-
+        /// <summary>
+        /// Get valid resource type in Map3D
+        /// --------------------------------------
+        /// FeatureSource Contains the required parameters for connecting to a geospatial feature source 
+        /// LayerDefinition Contains the required parameters for displaying and styling a layer. Layers can be drawing layers, vector layers, or grid (raster) layers. 
+        /// SymbolDefinition Defines a symbol to be displayed on a map. 
+        /// </summary>
+        /// <returns></returns>
         public ArrayList GetResourceAllTypes()
         {
             ArrayList resourceTypes = new ArrayList();
