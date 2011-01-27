@@ -58,7 +58,7 @@ namespace MapResourceExplorer.UI
         }
 
 
-        private ExplorerForm explorerForm
+        public ExplorerForm ExplorerForm
         {
             get
             {
@@ -70,16 +70,15 @@ namespace MapResourceExplorer.UI
         /// <summary>
         /// Show or hide the UI.
         /// </summary>
-        public void Show(bool visible)
+        public void Show()
         {
-            _paletteSet.Visible = visible;
-            _paletteSet.KeepFocus = visible;
+            _paletteSet.Visible = true;
+            _paletteSet.KeepFocus = true;
 
-            if (visible)
-            {
-                explorerForm.ForceRefresh();
-            }
+            ExplorerForm.ForceRefresh();
+
         }
+
 
     }
 }

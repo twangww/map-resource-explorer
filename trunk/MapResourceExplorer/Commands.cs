@@ -24,6 +24,9 @@ namespace MapResourceExplorer
             // Prompt the commands this assembly offers
             Commands cmd = new Commands();
             cmd.CmdListCommand();
+
+            //Register Events;
+            //cmd.RegisterEvents();
         }
 
         /// <summary>
@@ -36,7 +39,7 @@ namespace MapResourceExplorer
         }
     }
 
-    public class Commands 
+    public class Commands
     {
 
 
@@ -44,14 +47,25 @@ namespace MapResourceExplorer
         public void CmdListCommand()
         {
             Util.PrintLn("PROMPT: MapResourceExplore commands:");
-            Util.PrintLn("\n ResourceExplorer");
+            Util.PrintLn("\nResourceExplorer");
+            Util.PrintLn("\nRegisterEvents");
         }
 
         [CommandMethod("ResourceExplorer")]
         public static void ResourceExplorerCommand()
         {
-            ResourceExplorerPalette.Instance.Show(true);
+            ResourceExplorerPalette.Instance.Show();
         }
 
+        [CommandMethod("RegisterEvents")]
+        public void RegisterEvents()
+        {
+            Application.DocumentManager.DocumentActivated += new DocumentCollectionEventHandler(DocumentManager_DocumentActivated);
+        }
+
+        void DocumentManager_DocumentActivated(object sender, DocumentCollectionEventArgs e)
+        {
+            ResourceExplorerPalette.Instance.ExplorerForm.ForceRefresh();
+        }
     }
 }
