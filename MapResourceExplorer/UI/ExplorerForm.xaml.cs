@@ -27,7 +27,7 @@ namespace MapResourceExplorer.UI
             InitializeComponent();
         }
 
-        internal void ForceRefresh()
+        public void ForceRefresh()
         {
             //TODO: Refresh all the resources
 
