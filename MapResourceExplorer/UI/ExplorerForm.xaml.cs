@@ -55,7 +55,13 @@ namespace MapResourceExplorer.UI
                     TreeViewItem resItem = new TreeViewItem();
                     resItem.Header = item.Key;
                     resItem.ToolTip = item.Value;
+
+                    //TODO: Add a context numu
+                    
+
                     resourceTypeitem.Items.Add(resItem);
+
+                    
                 }
 
                 tree.Items.Add(resourceTypeitem);
