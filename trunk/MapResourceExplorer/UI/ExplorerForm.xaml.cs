@@ -29,9 +29,11 @@ namespace MapResourceExplorer.UI
 
         public void ForceRefresh()
         {
-            //TODO: Refresh all the resources
-
-            BindTreeView(treeView1);
+            if (this.IsVisible)
+            {
+                BindTreeView(treeView1);
+            }
+            
         }
 
 
@@ -57,8 +59,6 @@ namespace MapResourceExplorer.UI
                     resItem.ToolTip = item.Value;
 
                     //TODO: Add a context numu
-                    
-
                     resourceTypeitem.Items.Add(resItem);
 
                     
@@ -66,9 +66,10 @@ namespace MapResourceExplorer.UI
 
                 tree.Items.Add(resourceTypeitem);
             }
+
+           
           
         }
-
 
 
     }

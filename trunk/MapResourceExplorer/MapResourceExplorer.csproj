@@ -106,9 +106,6 @@
     <Compile Include="Model\EventManager.cs" />
     <Compile Include="Model\ResourceManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UI\ResContextMenu.xaml.cs">
-      <DependentUpon>ResContextMenu.xaml</DependentUpon>
-    </Compile>
     <Compile Include="UI\ExplorerForm.xaml.cs">
       <DependentUpon>ExplorerForm.xaml</DependentUpon>
     </Compile>
@@ -121,10 +118,6 @@
     <Compile Include="UI\ResourceExplorerPalette.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="UI\ResContextMenu.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="UI\ExplorerForm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
