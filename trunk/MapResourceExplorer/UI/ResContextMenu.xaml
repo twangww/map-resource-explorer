@@ -1,0 +1,11 @@
+﻿<UserControl x:Class="MapResourceExplorer.UI.ResContextMenu"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Height="300" Width="300">
+    <Grid>
+        <Menu Name="ResourceOperation" VerticalAlignment="Top" >
+            <MenuItem Header="Show Resource Content" />
+            <MenuItem Header="Show Resource Header" />
+        </Menu>
+    </Grid>
+</UserControl>
