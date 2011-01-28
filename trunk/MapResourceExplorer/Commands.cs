@@ -9,6 +9,7 @@ using Autodesk.AutoCAD.Runtime;
 
 using MapResourceExplorer.UI;
 using Autodesk.Gis.Map.Platform.Utils;
+using MapResourceExplorer.Model;
 
 namespace MapResourceExplorer
 {
@@ -26,7 +27,7 @@ namespace MapResourceExplorer
             cmd.CmdListCommand();
 
             //Register Events;
-            //cmd.RegisterEvents();
+            cmd.RegisterEvents();
         }
 
         /// <summary>
@@ -60,12 +61,10 @@ namespace MapResourceExplorer
         [CommandMethod("RegisterEvents")]
         public void RegisterEvents()
         {
-            Application.DocumentManager.DocumentActivated += new DocumentCollectionEventHandler(DocumentManager_DocumentActivated);
+            EventManager.Instance.RegisterEvents();
+            
         }
 
-        void DocumentManager_DocumentActivated(object sender, DocumentCollectionEventArgs e)
-        {
-            ResourceExplorerPalette.Instance.ExplorerForm.ForceRefresh();
-        }
+    
     }
 }
