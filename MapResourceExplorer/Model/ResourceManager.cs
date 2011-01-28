@@ -128,5 +128,19 @@ namespace MapResourceExplorer.Model
             }
         }
 
+
+        public string GetResourceContent(MgResourceIdentifier resId)
+        {
+            MgByteReader reader = ResourceService.GetResourceContent(resId);
+            return reader.ToString();
+        }
+
+        public string GetResourceHeader(MgResourceIdentifier resId)
+        {
+            MgByteReader reader = ResourceService.GetResourceHeader(resId);
+            return reader.ToString();
+        }
+
+        
     }
 }
