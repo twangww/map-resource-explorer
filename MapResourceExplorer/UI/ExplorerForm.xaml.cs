@@ -57,6 +57,7 @@ namespace MapResourceExplorer.UI
                     TreeViewItem resItem = new TreeViewItem();
                     resItem.Header = item.Key;
                     resItem.ToolTip = item.Value;
+                    resItem.Tag = "IsResource";
 
                     //TODO: Add a context numu
                     resourceTypeitem.Items.Add(resItem);
@@ -91,6 +92,65 @@ namespace MapResourceExplorer.UI
             }
 
             return source;
+        }
+
+        /// <summary>
+        /// right click Item to select item. for context menu
+        /// 
+        /// http://www.cnblogs.com/TianFang/archive/2010/02/10/1667153.html
+        /// http://www.cnblogs.com/tianfang/archive/2010/02/10/1667186.html
+        /// </summary>
+        /// 
+        bool isResItemSlected = false;
+        private void treeView1_PreviewMouseRightButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            object item = GetElementFromPoint((ItemsControl)sender, e.GetPosition((ItemsControl)sender));
+            isResItemSlected = (item != null);
+        }
+
+        private object GetElementFromPoint(ItemsControl itemsControl, Point point)
+        {
+            UIElement element = itemsControl.InputHitTest(point) as UIElement;
+            while (element != null)
+            {
+                if (element == itemsControl)
+                {
+                    return null;
+                }
+
+                object item = itemsControl.ItemContainerGenerator.ItemFromContainer(element);
+                if (!item.Equals(DependencyProperty.UnsetValue))
+                {
+                    return item;
+                }
+
+                element = (UIElement)VisualTreeHelper.GetParent(element);
+            }
+
+            return null;
+        }
+
+        private void ShowResourceContent_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            MessageBox.Show("ShowResourceConten" + (sender as TreeViewItem).Header);
+
+        }
+
+        private void ShowResourceContent_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = isResItemSlected;
+        }
+
+        private void MenuItem_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ShowResourceContent_Checked(object sender, RoutedEventArgs e)
+        {
+            //Just for test, 
+            MessageBox.Show("ShowResourceConten");
+
         }
     }
 }
