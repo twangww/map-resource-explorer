@@ -5,7 +5,16 @@
 
     
     <Grid>
+        
+        
         <TreeView Margin="12,12,12,52" Name="treeView1">
+            <TreeView.ItemContainerStyle>
+                <Style TargetType="{x:Type TreeViewItem}">
+                    <EventSetter Event="TreeViewItem.PreviewMouseRightButtonDown" Handler="TreeViewItem_PreviewMouseRightButtonDown"/>
+                    
+                </Style>
+                
+            </TreeView.ItemContainerStyle>
             <TreeView.ContextMenu>
                 <ContextMenu>
                     <MenuItem Header="Show Resource Content"/>

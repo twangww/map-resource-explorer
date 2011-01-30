@@ -72,5 +72,25 @@ namespace MapResourceExplorer.UI
         }
 
 
+        //
+        private void TreeViewItem_PreviewMouseRightButtonDown(Object sender, MouseButtonEventArgs e)
+        {
+            var treeViewItem = VisualUpwardsSearch<TreeViewItem>(e.OriginalSource as DependencyObject) as TreeViewItem;
+            if (treeViewItem != null)
+            {
+                treeViewItem.Focus();
+                e.Handled = true;
+            }
+        }
+
+        static DependencyObject VisualUpwardsSearch<T>(DependencyObject source)
+        {
+            while (source != null && source.GetType() != typeof(T))
+            {
+                source = VisualTreeHelper.GetParent(source);
+            }
+
+            return source;
+        }
     }
 }
