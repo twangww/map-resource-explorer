@@ -7,17 +7,19 @@
     <Grid>
         
         
-        <TreeView Margin="12,12,12,52" Name="treeView1">
+        <TreeView Margin="12,12,12,52" Name="treeView1" PreviewMouseRightButtonDown="treeView1_PreviewMouseRightButtonDown">
             <TreeView.ItemContainerStyle>
                 <Style TargetType="{x:Type TreeViewItem}">
                     <EventSetter Event="TreeViewItem.PreviewMouseRightButtonDown" Handler="TreeViewItem_PreviewMouseRightButtonDown"/>
-                    
                 </Style>
-                
             </TreeView.ItemContainerStyle>
+            <TreeView.CommandBindings>
+               
+                
+            </TreeView.CommandBindings>
             <TreeView.ContextMenu>
                 <ContextMenu>
-                    <MenuItem Header="Show Resource Content"/>
+                    <MenuItem Header="Show Resource Content" Checked="ShowResourceContent_Checked"/>
                     <MenuItem Header="Show Resource Header"/>
                     <MenuItem Header="..."/>
                 </ContextMenu>
