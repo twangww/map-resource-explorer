@@ -58,7 +58,7 @@ namespace MapResourceExplorer.UI
                     resItem.Header = item.Key;
                     resItem.ToolTip = item.Value;
                     resItem.Tag = "IsResource";
-
+                    
                     //TODO: Add a context numu
                     resourceTypeitem.Items.Add(resItem);
 
@@ -151,6 +151,11 @@ namespace MapResourceExplorer.UI
             //Just for test, 
             MessageBox.Show("ShowResourceConten");
 
+        }
+
+        private void RefreshButton_Clicked(object sender, RoutedEventArgs e)
+        {
+            ForceRefresh();
         }
     }
 }
