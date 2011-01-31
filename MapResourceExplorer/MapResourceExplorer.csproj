@@ -41,11 +41,6 @@
       <HintPath>..\..\Program Files\Autodesk\AutoCAD Civil 3D 2011\acmgd.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Autodesk.Gis.Map.Shared, Version=14.0.45.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Program Files\Autodesk\AutoCAD Civil 3D 2011\Autodesk.Gis.Map.Shared.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="Autodesk.Map.Platform, Version=14.0.45.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Program Files\Autodesk\AutoCAD Civil 3D 2011\Autodesk.Map.Platform.dll</HintPath>
@@ -125,6 +120,15 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ReadMe.txt" />
+    <Resource Include="UI\Images\about.png" />
+    <Resource Include="UI\Images\edit-xml.png" />
+    <Resource Include="UI\Images\help.png" />
+    <Resource Include="UI\Images\legend-DWF.png" />
+    <Resource Include="UI\Images\legend-layer.png" />
+    <Resource Include="UI\Images\legend-map.png" />
+    <Resource Include="UI\Images\legend-raster.png" />
+    <Resource Include="UI\Images\legend-theme.png" />
+    <Resource Include="UI\Images\refresh.gif" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
