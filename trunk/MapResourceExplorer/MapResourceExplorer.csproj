@@ -111,6 +111,12 @@
       <DependentUpon>Panel.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\ResourceExplorerPalette.cs" />
+    <Compile Include="UI\XmlEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\XmlEditor.Designer.cs">
+      <DependentUpon>XmlEditor.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Page Include="UI\ExplorerForm.xaml">
@@ -129,6 +135,11 @@
     <Resource Include="UI\Images\legend-raster.png" />
     <Resource Include="UI\Images\legend-theme.png" />
     <Resource Include="UI\Images\refresh.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="UI\XmlEditor.resx">
+      <DependentUpon>XmlEditor.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

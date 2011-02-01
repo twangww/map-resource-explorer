@@ -33,7 +33,7 @@ namespace MapResourceExplorer.UI
             {
                 BindTreeView(treeView1);
             }
-            
+
         }
 
 
@@ -43,7 +43,7 @@ namespace MapResourceExplorer.UI
 
             ResourceManager resourceMgr = ResourceManager.Instance;
 
-            Dictionary<string,string> resourceTypes = resourceMgr.GetResourceAllTypes();
+            Dictionary<string, string> resourceTypes = resourceMgr.GetResourceAllTypes();
             foreach (var resType in resourceTypes)
             {
                 TreeViewItem resourceTypeitem = new TreeViewItem();
@@ -51,25 +51,25 @@ namespace MapResourceExplorer.UI
                 resourceTypeitem.ToolTip = resType.Value;
                 //Bind resource to resourceItemType
                 Dictionary<string, string> resList = resourceMgr.GetResourcesByType(resType.Key);
-               
+
                 foreach (var item in resList)
                 {
                     TreeViewItem resItem = new TreeViewItem();
                     resItem.Header = item.Key;
                     resItem.ToolTip = item.Value;
                     resItem.Tag = "IsResource";
-                    
+
                     //TODO: Add a context numu
                     resourceTypeitem.Items.Add(resItem);
 
-                    
+
                 }
 
                 tree.Items.Add(resourceTypeitem);
             }
 
-           
-          
+
+
         }
 
 
@@ -146,16 +146,39 @@ namespace MapResourceExplorer.UI
 
         }
 
-        private void ShowResourceContent_Checked(object sender, RoutedEventArgs e)
-        {
-            //Just for test, 
-            MessageBox.Show("ShowResourceConten");
-
-        }
-
         private void RefreshButton_Clicked(object sender, RoutedEventArgs e)
         {
             ForceRefresh();
+        }
+
+        private void ShowResourceContent_Clicked(object sender, RoutedEventArgs e)
+        {
+            if (isResItemSlected)
+            {
+                TreeViewItem item = treeView1.SelectedItem as TreeViewItem;
+                string resId = item.ToolTip.ToString();
+                string resXml = ResourceManager.Instance.GetResourceContent(resId);
+                XmlEditor.Instance(resXml).ShowDialog();
+            }
+        }
+
+        private void ContextMenu_Opening(object sender, ContextMenuEventArgs e)
+        {
+            if (!isResItemSlected)
+            {
+                // disable menu item
+            }
+        }
+
+        private void ShowResourceHeader_Clicked(object sender, RoutedEventArgs e)
+        {
+            if (isResItemSlected)
+            {
+                TreeViewItem item = treeView1.SelectedItem as TreeViewItem;
+                string resId = item.ToolTip.ToString();
+                string resXml = ResourceManager.Instance.GetResourceHeader(resId);
+                XmlEditor.Instance(resXml).ShowDialog();
+            }
         }
     }
 }
