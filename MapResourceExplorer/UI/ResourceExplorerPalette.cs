@@ -44,7 +44,7 @@ namespace MapResourceExplorer.UI
                 PaletteSetStyles.ShowCloseButton;
 
             _panel = new Panel();
-            _paletteSet.Add("Resource Explorer", _panel);
+            _paletteSet.Add(PaletteName, _panel);
         }
 
 

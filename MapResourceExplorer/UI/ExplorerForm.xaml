@@ -14,9 +14,9 @@
 
             </TreeView.CommandBindings>
             <TreeView.ContextMenu>
-                <ContextMenu>
-                    <MenuItem Header="Show Resource Content" Checked="ShowResourceContent_Checked"/>
-                    <MenuItem Header="Show Resource Header"/>
+                <ContextMenu Name="ResOpMenu" ContextMenuOpening="ContextMenu_Opening">
+                    <MenuItem Header="Show Resource Content" Click="ShowResourceContent_Clicked"/>
+                    <MenuItem Header="Show Resource Header" Click="ShowResourceHeader_Clicked"/>
                     <MenuItem Header="..."/>
                 </ContextMenu>
             </TreeView.ContextMenu>

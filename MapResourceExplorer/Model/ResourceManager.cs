@@ -129,14 +129,16 @@ namespace MapResourceExplorer.Model
         }
 
 
-        public string GetResourceContent(MgResourceIdentifier resId)
+        public string GetResourceContent(string resourceId)
         {
+            MgResourceIdentifier resId = new MgResourceIdentifier(resourceId);
             MgByteReader reader = ResourceService.GetResourceContent(resId);
             return reader.ToString();
         }
 
-        public string GetResourceHeader(MgResourceIdentifier resId)
+        public string GetResourceHeader(string resourceId)
         {
+            MgResourceIdentifier resId = new MgResourceIdentifier(resourceId);
             MgByteReader reader = ResourceService.GetResourceHeader(resId);
             return reader.ToString();
         }
