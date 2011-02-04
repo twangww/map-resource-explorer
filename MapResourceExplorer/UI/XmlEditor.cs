@@ -19,16 +19,19 @@ namespace MapResourceExplorer.UI
 
         private static XmlEditor _instance;
 
-        public static XmlEditor Instance()
+        public static XmlEditor Instance
         {
-
-            if (_instance == null)
+            get
             {
-                _instance = new XmlEditor();
-                _instance.tbXmlEditor.Text = string.Empty;
-            }
 
-            return _instance;
+                if (_instance == null)
+                {
+                    _instance = new XmlEditor();
+                    _instance.tbXmlEditor.Text = string.Empty;
+                }
+
+                return _instance;
+            }
 
         }
 
