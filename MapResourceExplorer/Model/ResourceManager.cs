@@ -135,14 +135,6 @@ namespace MapResourceExplorer.Model
             MgByteReader reader = ResourceService.GetResourceContent(resId);
             return reader.ToString();
         }
-
-        public string GetResourceHeader(string resourceId)
-        {
-            MgResourceIdentifier resId = new MgResourceIdentifier(resourceId);
-            MgByteReader reader = ResourceService.GetResourceHeader(resId);
-            return reader.ToString();
-        }
-
         
     }
 }
