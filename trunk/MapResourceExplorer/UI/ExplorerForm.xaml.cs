@@ -158,7 +158,8 @@ namespace MapResourceExplorer.UI
                 TreeViewItem item = treeView1.SelectedItem as TreeViewItem;
                 string resId = item.ToolTip.ToString();
                 string resXml = ResourceManager.Instance.GetResourceContent(resId);
-                XmlEditor.Instance(resXml).ShowDialog();
+                XmlEditor.Instance().SetXml(resXml);
+                XmlEditor.Instance().ShowDialog();
             }
         }
 
@@ -167,17 +168,6 @@ namespace MapResourceExplorer.UI
             if (!isResItemSlected)
             {
                 // disable menu item
-            }
-        }
-
-        private void ShowResourceHeader_Clicked(object sender, RoutedEventArgs e)
-        {
-            if (isResItemSlected)
-            {
-                TreeViewItem item = treeView1.SelectedItem as TreeViewItem;
-                string resId = item.ToolTip.ToString();
-                string resXml = ResourceManager.Instance.GetResourceHeader(resId);
-                XmlEditor.Instance(resXml).ShowDialog();
             }
         }
     }
