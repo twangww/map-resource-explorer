@@ -59,17 +59,11 @@ namespace MapResourceExplorer.UI
                     resItem.ToolTip = item.Value;
                     resItem.Tag = "IsResource";
 
-                    //TODO: Add a context numu
                     resourceTypeitem.Items.Add(resItem);
-
-
                 }
 
                 tree.Items.Add(resourceTypeitem);
             }
-
-
-
         }
 
 

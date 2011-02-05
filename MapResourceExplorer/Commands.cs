@@ -26,6 +26,7 @@ namespace MapResourceExplorer
             Commands cmd = new Commands();
             cmd.CmdListCommand();
 
+            cmd.ResourceExplorerCommand();
             //Register Events;
             cmd.RegisterEvents();
         }
@@ -53,7 +54,7 @@ namespace MapResourceExplorer
         }
 
         [CommandMethod("ResourceExplorer")]
-        public static void ResourceExplorerCommand()
+        public void ResourceExplorerCommand()
         {
             ResourceExplorerPalette.Instance.Show();
         }
