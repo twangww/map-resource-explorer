@@ -135,11 +135,6 @@ namespace MapResourceExplorer.UI
             e.CanExecute = isResItemSlected;
         }
 
-        private void MenuItem_Checked(object sender, RoutedEventArgs e)
-        {
-
-        }
-
         private void RefreshButton_Clicked(object sender, RoutedEventArgs e)
         {
             ForceRefresh();
@@ -163,6 +158,19 @@ namespace MapResourceExplorer.UI
             {
                 // disable menu item
             }
+        }
+
+        private void ShowResourceReferences_Clicked(object sender, RoutedEventArgs e)
+        {
+            if (isResItemSlected)
+            {
+                TreeViewItem item = treeView1.SelectedItem as TreeViewItem;
+                string resId = item.ToolTip.ToString();
+                string resXml = ResourceManager.Instance.GetResourceReferences(resId);
+                XmlEditor.Instance.SetXml(resXml);
+                XmlEditor.Instance.ShowDialog();
+            }
+
         }
     }
 }

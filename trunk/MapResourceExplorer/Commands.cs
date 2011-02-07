@@ -49,11 +49,11 @@ namespace MapResourceExplorer
         public void CmdListCommand()
         {
             Util.PrintLn("PROMPT: MapResourceExplore commands:");
-            Util.PrintLn("\nResourceExplorer");
-            Util.PrintLn("\nRegisterEvents");
+            Util.PrintLn("ShowResourceExplorer");
+            Util.PrintLn("RegisterEvents");
         }
 
-        [CommandMethod("ResourceExplorer")]
+        [CommandMethod("ShowResourceExplorer")]
         public void ResourceExplorerCommand()
         {
             ResourceExplorerPalette.Instance.Show();

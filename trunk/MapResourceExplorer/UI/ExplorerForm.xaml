@@ -16,7 +16,7 @@
             <TreeView.ContextMenu>
                 <ContextMenu Name="ResOpMenu" ContextMenuOpening="ContextMenu_Opening">
                     <MenuItem Header="Show Resource Content" Click="ShowResourceContent_Clicked"/>
-                    <MenuItem Header="..."/>
+                    <MenuItem Header="Show Resource References" Click="ShowResourceReferences_Clicked"/>
                 </ContextMenu>
             </TreeView.ContextMenu>
 
