@@ -215,6 +215,8 @@ namespace MapResourceExplorer.UI
                 + this.Reader.LinePosition + " - " + args.Message;
 
             this.tbValidateResult.Text += strTemp;
+
+            xmlValid = false;
         }
         #endregion
     }
