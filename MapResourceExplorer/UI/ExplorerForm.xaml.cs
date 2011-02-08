@@ -147,6 +147,7 @@ namespace MapResourceExplorer.UI
                 TreeViewItem item = treeView1.SelectedItem as TreeViewItem;
                 string resId = item.ToolTip.ToString();
                 string resXml = ResourceManager.Instance.GetResourceContent(resId);
+                XmlEditor.Instance.CurrentResourceId = resId;
                 XmlEditor.Instance.SetXml(resXml);
                 XmlEditor.Instance.ShowDialog();
             }
@@ -167,6 +168,7 @@ namespace MapResourceExplorer.UI
                 TreeViewItem item = treeView1.SelectedItem as TreeViewItem;
                 string resId = item.ToolTip.ToString();
                 string resXml = ResourceManager.Instance.GetResourceReferences(resId);
+                XmlEditor.Instance.CurrentResourceId = resId;
                 XmlEditor.Instance.SetXml(resXml);
                 XmlEditor.Instance.ShowDialog();
             }

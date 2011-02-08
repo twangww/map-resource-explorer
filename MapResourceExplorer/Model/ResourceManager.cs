@@ -38,6 +38,10 @@ namespace MapResourceExplorer.Model
 
         #endregion
 
+        #region Constant
+        const string MSG_RESOURCE_NOT_EXIST = "The resource your requested do not exist.";
+        #endregion
+
 
         private MgResourceService _resourceService;
         public MgResourceService ResourceService
@@ -60,7 +64,7 @@ namespace MapResourceExplorer.Model
         /// SymbolDefinition Defines a symbol to be displayed on a map. 
         /// </summary>
         /// <returns></returns>
-        public Dictionary<string,string> GetResourceAllTypes()
+        public Dictionary<string, string> GetResourceAllTypes()
         {
             Dictionary<string, string> resourceTypes = new Dictionary<string, string>();
             resourceTypes.Add(MgResourceType.FeatureSource, "Contains the required parameters for connecting to a geospatial feature source.");
@@ -131,17 +135,56 @@ namespace MapResourceExplorer.Model
 
         public string GetResourceContent(string resourceId)
         {
+
             MgResourceIdentifier resId = new MgResourceIdentifier(resourceId);
-            MgByteReader reader = ResourceService.GetResourceContent(resId);
-            return reader.ToString();
+            if (ResourceService.ResourceExists(resId))
+            {
+                MgByteReader reader = ResourceService.GetResourceContent(resId);
+                return reader.ToString();
+            }
+            else
+            {
+                return MSG_RESOURCE_NOT_EXIST;
+            }
+
+        }
+
+
+        public void SetResourceContent(string resourceId, string resourceContent)
+        {
+            MgResourceIdentifier resId = new MgResourceIdentifier(resourceId);
+            byte[] bytes = Encoding.Unicode.GetBytes(resourceContent);
+            MgByteSource src = new MgByteSource(bytes, bytes.Length);
+            ResourceService.SetResource(resId, src.GetReader(), null);
         }
 
         public string GetResourceReferences(string resourceId)
         {
             MgResourceIdentifier resId = new MgResourceIdentifier(resourceId);
-            MgByteReader reader = ResourceService.EnumerateReferences(resId);
-            return reader.ToString();
+            if (ResourceService.ResourceExists(resId))
+            {
+                MgByteReader reader = ResourceService.EnumerateReferences(resId);
+                return reader.ToString();
+            }
+            else
+            {
+                return MSG_RESOURCE_NOT_EXIST;
+            }
+
         }
-        
+
+
+        public string GetSchemaFilePath(string resourceId)
+        {
+            //TODO: validate resource content according to resoruce type
+            MgResourceIdentifier resId = new MgResourceIdentifier(resourceId);
+            string resType = resId.GetResourceType();
+            //.....
+
+
+
+            return "";
+        }
+
     }
 }

@@ -38,12 +38,13 @@
             this.copyToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.pasteToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripButtonValidate = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonSaveToLibrary = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.helpToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripButtonValidate = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtonSaveToLibrary = new System.Windows.Forms.ToolStripButton();
+            this.tbValidateResult = new System.Windows.Forms.RichTextBox();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -51,9 +52,10 @@
             // 
             this.tbXmlEditor.Location = new System.Drawing.Point(12, 38);
             this.tbXmlEditor.Name = "tbXmlEditor";
-            this.tbXmlEditor.Size = new System.Drawing.Size(497, 343);
+            this.tbXmlEditor.Size = new System.Drawing.Size(497, 283);
             this.tbXmlEditor.TabIndex = 0;
             this.tbXmlEditor.Text = "";
+            this.tbXmlEditor.TextChanged += new System.EventHandler(this.tbXmlEditor_TextChanged);
             // 
             // toolStrip1
             // 
@@ -135,32 +137,6 @@
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
             // 
-            // helpToolStripButton
-            // 
-            this.helpToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.helpToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("helpToolStripButton.Image")));
-            this.helpToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.helpToolStripButton.Name = "helpToolStripButton";
-            this.helpToolStripButton.Size = new System.Drawing.Size(23, 22);
-            this.helpToolStripButton.Text = "He&lp";
-            // 
-            // saveFileDialog1
-            // 
-            this.saveFileDialog1.DefaultExt = "xml";
-            this.saveFileDialog1.Filter = "xml file|*.xml|All files|*.*";
-            this.saveFileDialog1.Title = "Save Resource as XML";
-            // 
-            // openFileDialog1
-            // 
-            this.openFileDialog1.DefaultExt = "xml";
-            this.openFileDialog1.FileName = "openFileDialog1";
-            this.openFileDialog1.Filter = "xml file|*.xml|All files|*.*";
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
-            // 
             // toolStripButtonValidate
             // 
             this.toolStripButtonValidate.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -183,11 +159,46 @@
             this.toolStripButtonSaveToLibrary.ToolTipText = "Save resource content to Library";
             this.toolStripButtonSaveToLibrary.Click += new System.EventHandler(this.toolStripButtonSaveToLibrary_Click);
             // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
+            // 
+            // helpToolStripButton
+            // 
+            this.helpToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.helpToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("helpToolStripButton.Image")));
+            this.helpToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.helpToolStripButton.Name = "helpToolStripButton";
+            this.helpToolStripButton.Size = new System.Drawing.Size(23, 22);
+            this.helpToolStripButton.Text = "He&lp";
+            // 
+            // saveFileDialog1
+            // 
+            this.saveFileDialog1.DefaultExt = "xml";
+            this.saveFileDialog1.Filter = "xml file|*.xml|All files|*.*";
+            this.saveFileDialog1.Title = "Save Resource as XML";
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.DefaultExt = "xml";
+            this.openFileDialog1.FileName = "openFileDialog1";
+            this.openFileDialog1.Filter = "xml file|*.xml|All files|*.*";
+            // 
+            // tbValidateResult
+            // 
+            this.tbValidateResult.Location = new System.Drawing.Point(12, 327);
+            this.tbValidateResult.Name = "tbValidateResult";
+            this.tbValidateResult.Size = new System.Drawing.Size(497, 57);
+            this.tbValidateResult.TabIndex = 2;
+            this.tbValidateResult.Text = "";
+            // 
             // XmlEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(519, 411);
+            this.Controls.Add(this.tbValidateResult);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.tbXmlEditor);
             this.Name = "XmlEditor";
@@ -217,5 +228,6 @@
         private System.Windows.Forms.ToolStripButton toolStripButtonValidate;
         private System.Windows.Forms.ToolStripButton toolStripButtonSaveToLibrary;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.RichTextBox tbValidateResult;
     }
 }
