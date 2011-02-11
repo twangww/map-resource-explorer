@@ -22,6 +22,8 @@ namespace MapResourceExplorer.UI
     /// </summary>
     public partial class ExplorerForm : UserControl
     {
+        const string TAG_IS_RESOURCE = "IsResource";
+
         public ExplorerForm()
         {
             InitializeComponent();
@@ -49,6 +51,8 @@ namespace MapResourceExplorer.UI
                 TreeViewItem resourceTypeitem = new TreeViewItem();
                 resourceTypeitem.Header = resType.Key;
                 resourceTypeitem.ToolTip = resType.Value;
+                resourceTypeitem.Tag = string.Empty;
+                resourceTypeitem.IsExpanded = true;
                 //Bind resource to resourceItemType
                 Dictionary<string, string> resList = resourceMgr.GetResourcesByType(resType.Key);
 
@@ -57,7 +61,7 @@ namespace MapResourceExplorer.UI
                     TreeViewItem resItem = new TreeViewItem();
                     resItem.Header = item.Key;
                     resItem.ToolTip = item.Value;
-                    resItem.Tag = "IsResource";
+                    resItem.Tag = TAG_IS_RESOURCE;
 
                     resourceTypeitem.Items.Add(resItem);
                 }
@@ -67,13 +71,38 @@ namespace MapResourceExplorer.UI
         }
 
 
-        //
+        #region treeview righ click to select item
+        /// <summary>
+        /// right click Item to select item. for context menu
+        /// 
+        /// http://www.cnblogs.com/TianFang/archive/2010/02/10/1667153.html
+        /// http://www.cnblogs.com/tianfang/archive/2010/02/10/1667186.html
+        /// </summary>
+        /// 
+
+
+        //bool isResItemSlected = false;
+
+        private void treeView1_MouseRightButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            //isResItemSlected = false;
+        }
+
+        private void TreeViewItem_MouseRightButtonDown(Object sender, MouseButtonEventArgs e)
+        {
+            //TreeViewItem treeViewItem = sender as TreeViewItem;
+            //if (treeViewItem.Tag.ToString() == TAG_IS_RESOURCE)
+            //{
+            //    isResItemSlected = true;
+            //}
+        }
         private void TreeViewItem_PreviewMouseRightButtonDown(Object sender, MouseButtonEventArgs e)
         {
             var treeViewItem = VisualUpwardsSearch<TreeViewItem>(e.OriginalSource as DependencyObject) as TreeViewItem;
             if (treeViewItem != null)
             {
                 treeViewItem.Focus();
+
                 e.Handled = true;
             }
         }
@@ -88,52 +117,7 @@ namespace MapResourceExplorer.UI
             return source;
         }
 
-        /// <summary>
-        /// right click Item to select item. for context menu
-        /// 
-        /// http://www.cnblogs.com/TianFang/archive/2010/02/10/1667153.html
-        /// http://www.cnblogs.com/tianfang/archive/2010/02/10/1667186.html
-        /// </summary>
-        /// 
-        bool isResItemSlected = false;
-        private void treeView1_PreviewMouseRightButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            object item = GetElementFromPoint((ItemsControl)sender, e.GetPosition((ItemsControl)sender));
-            isResItemSlected = (item != null);
-        }
-
-        private object GetElementFromPoint(ItemsControl itemsControl, Point point)
-        {
-            UIElement element = itemsControl.InputHitTest(point) as UIElement;
-            while (element != null)
-            {
-                if (element == itemsControl)
-                {
-                    return null;
-                }
-
-                object item = itemsControl.ItemContainerGenerator.ItemFromContainer(element);
-                if (!item.Equals(DependencyProperty.UnsetValue))
-                {
-                    return item;
-                }
-
-                element = (UIElement)VisualTreeHelper.GetParent(element);
-            }
-
-            return null;
-        }
-
-        private void ShowResourceContent_Executed(object sender, ExecutedRoutedEventArgs e)
-        {
-            MessageBox.Show("ShowResourceConten" + (sender as TreeViewItem).Header);
-
-        }
-
-        private void ShowResourceContent_CanExecute(object sender, CanExecuteRoutedEventArgs e)
-        {
-            e.CanExecute = isResItemSlected;
-        }
+        #endregion
 
         private void RefreshButton_Clicked(object sender, RoutedEventArgs e)
         {
@@ -142,9 +126,9 @@ namespace MapResourceExplorer.UI
 
         private void ShowResourceContent_Clicked(object sender, RoutedEventArgs e)
         {
-            if (isResItemSlected)
+            TreeViewItem item = treeView1.SelectedItem as TreeViewItem;
+            if (item != null && item.Tag.ToString() == TAG_IS_RESOURCE)
             {
-                TreeViewItem item = treeView1.SelectedItem as TreeViewItem;
                 string resId = item.ToolTip.ToString();
                 string resXml = ResourceManager.Instance.GetResourceContent(resId);
                 XmlEditor.Instance.CurrentResourceId = resId;
@@ -153,19 +137,11 @@ namespace MapResourceExplorer.UI
             }
         }
 
-        private void ContextMenu_Opening(object sender, ContextMenuEventArgs e)
-        {
-            if (!isResItemSlected)
-            {
-                // disable menu item
-            }
-        }
-
         private void ShowResourceReferences_Clicked(object sender, RoutedEventArgs e)
         {
-            if (isResItemSlected)
+            TreeViewItem item = treeView1.SelectedItem as TreeViewItem;
+            if (item != null && item.Tag.ToString() == TAG_IS_RESOURCE)
             {
-                TreeViewItem item = treeView1.SelectedItem as TreeViewItem;
                 string resId = item.ToolTip.ToString();
                 string resXml = ResourceManager.Instance.GetResourceReferences(resId);
                 XmlEditor.Instance.CurrentResourceId = resId;
@@ -174,5 +150,7 @@ namespace MapResourceExplorer.UI
             }
 
         }
+
+
     }
 }
