@@ -41,7 +41,25 @@ namespace MapResourceExplorer.Model
         public void RegisterEvents()
         {
             Application.DocumentManager.DocumentActivated += new DocumentCollectionEventHandler(DocumentManager_DocumentActivated);
-            
+
+            ResourceManager.Instance.ResourceService.ResourceAdded += new Autodesk.Gis.Map.Platform.ResourceAddedHandler(ResourceService_ResourceAdded);
+            ResourceManager.Instance.ResourceService.ResourceRemoved += new Autodesk.Gis.Map.Platform.ResourceRemovedHandler(ResourceService_ResourceRemoved);
+            ResourceManager.Instance.ResourceService.ResourceModified += new Autodesk.Gis.Map.Platform.ResourceModifiedHandler(ResourceService_ResourceModified);
+        }
+
+        void ResourceService_ResourceModified(object sender, Autodesk.Gis.Map.Platform.AcMapResourceEventArgs args)
+        {
+            ResourceExplorerPalette.Instance.ExplorerForm.ForceRefresh();
+        }
+
+        void ResourceService_ResourceRemoved(object sender, Autodesk.Gis.Map.Platform.AcMapResourceEventArgs args)
+        {
+            ResourceExplorerPalette.Instance.ExplorerForm.ForceRefresh();
+        }
+
+        void ResourceService_ResourceAdded(object sender, Autodesk.Gis.Map.Platform.AcMapResourceEventArgs args)
+        {
+            ResourceExplorerPalette.Instance.ExplorerForm.ForceRefresh();
         }
         /// <summary>
         /// Refresh resource tree when active document is changed

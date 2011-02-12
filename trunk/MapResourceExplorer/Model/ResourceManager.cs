@@ -43,14 +43,14 @@ namespace MapResourceExplorer.Model
         #endregion
 
 
-        private MgResourceService _resourceService;
-        public MgResourceService ResourceService
+        private AcMapResourceService _resourceService;
+        public AcMapResourceService ResourceService
         {
             get
             {
                 if (_resourceService == null)
                 {
-                    _resourceService = AcMapServiceFactory.GetService(MgServiceType.ResourceService) as MgResourceService;
+                    _resourceService = AcMapServiceFactory.GetService(MgServiceType.ResourceService) as AcMapResourceService;
                 }
                 return _resourceService;
             }
