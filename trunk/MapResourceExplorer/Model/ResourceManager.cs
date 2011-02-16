@@ -153,8 +153,9 @@ namespace MapResourceExplorer.Model
         public void SetResourceContent(string resourceId, string resourceContent)
         {
             MgResourceIdentifier resId = new MgResourceIdentifier(resourceId);
-            byte[] bytes = Encoding.Unicode.GetBytes(resourceContent);
+            byte[] bytes = Encoding.UTF8.GetBytes(resourceContent);
             MgByteSource src = new MgByteSource(bytes, bytes.Length);
+            src.SetMimeType(MgMimeType.Xml);
             ResourceService.SetResource(resId, src.GetReader(), null);
         }
 
