@@ -1,0 +1,12 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="MapResourceExplorer.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="MapSDKPath" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C:\Map ObjectARX SDK 2011</Value>
+    </Setting>
+    <Setting Name="SchemaPath" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C:\Map ObjectARX SDK 2011\Schema</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

@@ -1,0 +1,9 @@
+C:\MapResourceExplorer\MapResourceExplorer\bin\Debug\MapResourceExplorer.dll
+C:\MapResourceExplorer\MapResourceExplorer\bin\Debug\MapResourceExplorer.pdb
+C:\MapResourceExplorer\MapResourceExplorer\obj\Debug\ResolveAssemblyReference.cache
+C:\MapResourceExplorer\MapResourceExplorer\obj\Debug\UI\ExplorerForm.baml
+C:\MapResourceExplorer\MapResourceExplorer\obj\Debug\UI\ExplorerForm.g.cs
+C:\MapResourceExplorer\MapResourceExplorer\obj\Debug\MapResourceExplorer_MarkupCompile.cache
+C:\MapResourceExplorer\MapResourceExplorer\obj\Debug\MapResourceExplorer.g.resources
+C:\MapResourceExplorer\MapResourceExplorer\obj\Debug\MapResourceExplorer.dll
+C:\MapResourceExplorer\MapResourceExplorer\obj\Debug\MapResourceExplorer.pdb
