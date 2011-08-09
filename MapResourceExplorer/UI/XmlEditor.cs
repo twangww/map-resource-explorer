@@ -1,15 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
 using System.IO;
-using MapResourceExplorer.Model;
+using System.Windows.Forms;
 using System.Xml;
 using System.Xml.Schema;
+using MapResourceExplorer.Model;
 
 namespace MapResourceExplorer.UI
 {
@@ -120,38 +114,66 @@ namespace MapResourceExplorer.UI
             //    MessageBox.Show("XML is valid.");
             //}
 
-            if (!xmlValidated)
+            if (!xmlValid)
             {
-                string xsdPath = ResourceManager.Instance.GetSchemaFilePath(this.CurrentResourceId);
+                string xsdPath = GetSchemaFilePath();
                 this.XmlValidate(xsdPath, tbXmlEditor.Text);
             }
         }
 
         private void toolStripButtonSaveToLibrary_Click(object sender, EventArgs e)
         {
-            if (!xmlValidated)
+
+            if (!xmlValid)
             {
-                //TODO: Get xsd path
-                string xsdPath = ResourceManager.Instance.GetSchemaFilePath(this.CurrentResourceId);
-                this.XmlValidate(xsdPath, tbXmlEditor.Text);
+                DialogResult ds = MessageBox.Show("The resource xml has not been validated! Are you going to validate now?", "Caution", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (ds == DialogResult.Yes)
+                {
+                    //TODO: Get xsd path
+                    string xsdPath = GetSchemaFilePath();
+                    this.XmlValidate(xsdPath, tbXmlEditor.Text);
+                }
+                else if (ds == DialogResult.No)
+                {
+                    if (DialogResult.Yes == MessageBox.Show("Do you really want to update to repository without validating? It may cause problems.", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning))
+                    {
+                        UpdateToRepository();
+                    }
+                }
+            }
+            else
+            {
+                UpdateToRepository();
             }
 
-            if (xmlValid)
-            {
-                ResourceManager.Instance.SetResourceContent(this.CurrentResourceId, tbXmlEditor.Text);
-                MessageBox.Show("Resource Content is updated into Library");
-            }
+        }
 
+        private void UpdateToRepository()
+        {
+            ResourceManager.Instance.SetResourceContent(this.CurrentResourceId, tbXmlEditor.Text);
+            MessageBox.Show("Resource Content is updated into Library");
         }
 
         private void tbXmlEditor_TextChanged(object sender, EventArgs e)
         {
-            xmlValidated = false;
+            xmlValid = false;
+        }
+
+        private string GetSchemaFilePath()
+        {
+            ////TODO: validate resource content according to resoruce type
+            //MgResourceIdentifier resId = new MgResourceIdentifier(resourceId);
+            //string resType = resId.GetResourceType();
+            ////.....
+
+            //XmlDocument dom = new XmlDocument();
+            //dom.LoadXml(tbXmlEditor.Text);
+            
+            
+            return Properties.Settings.Default.SchemaPath;
         }
 
         #region XML validation
-        //whether the xml is checked or not
-        private bool xmlValidated = false;
         //whether the xml is valid or not, against xsd
         private bool xmlValid = false;
 
@@ -192,7 +214,6 @@ namespace MapResourceExplorer.UI
                 { /*Empty loop*/}
 
                 xmlValid = true;
-                xmlValidated = true;
 
             }//try
             // Handle exceptions if you want

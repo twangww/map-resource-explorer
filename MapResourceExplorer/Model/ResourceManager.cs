@@ -1,14 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Collections;
-
+using System.Xml;
+using Autodesk.Gis.Map.Platform;
 using OSGeo.MapGuide;
 
-using Autodesk.Gis.Map.Platform;
-using Autodesk.Gis.Map.Platform.Utils;
-using System.Xml;
 
 namespace MapResourceExplorer.Model
 {
@@ -175,17 +171,6 @@ namespace MapResourceExplorer.Model
         }
 
 
-        public string GetSchemaFilePath(string resourceId)
-        {
-            //TODO: validate resource content according to resoruce type
-            MgResourceIdentifier resId = new MgResourceIdentifier(resourceId);
-            string resType = resId.GetResourceType();
-            //.....
-
-
-
-            return "";
-        }
 
     }
 }
