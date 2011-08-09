@@ -170,7 +170,5 @@ namespace MapResourceExplorer.Model
 
         }
 
-
-
     }
 }
