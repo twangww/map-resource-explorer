@@ -101,9 +101,8 @@ namespace MapResourceExplorer.UI
 
         private void toolStripButtonSaveToLibrary_Click(object sender, EventArgs e)
         {
-
-
-            if (DialogResult.Yes == MessageBox.Show("Do you really want to update to repository?.", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning))
+            if (DialogResult.Yes == MessageBox.Show("Do you really want to update to repository?.", "Warning",
+                                                        MessageBoxButtons.YesNo, MessageBoxIcon.Warning))
             {
                 UpdateToRepository();
             }
