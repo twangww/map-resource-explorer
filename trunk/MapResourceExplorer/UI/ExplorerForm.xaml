@@ -31,10 +31,10 @@
             <Button Name="Refresh" ToolTip="Refresh"  Click="RefreshButton_Clicked">
                 <Image Source="Images\refresh.gif" Height="16" Width="16"></Image>
             </Button>
-            <Button Name="ShowResourceContent" ToolTip="Show Resource Content" Click="ShowResourceContent_Clicked">
+            <Button Name="ShowResourceContent" ToolTip="Show resource content in xml editor" Click="ShowResourceContent_Clicked">
                 <Image Source="Images\edit-xml.png" Height="16" Width="16"></Image>
             </Button>
-            <Button Name="ShowReference" ToolTip="Find Reference" Click="ShowResourceReferences_Clicked">
+            <Button Name="ShowReference" ToolTip="Find the resources referencing this one" Click="ShowResourceReferences_Clicked">
                 <Image Source="Images\about.png" Height="16" Width="16"></Image>
             </Button>
             <Button Name="Help">
