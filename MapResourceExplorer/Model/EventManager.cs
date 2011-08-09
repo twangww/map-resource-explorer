@@ -1,6 +1,8 @@
 ﻿
 using Autodesk.AutoCAD.ApplicationServices;
+using Autodesk.Gis.Map.DisplayManagement;
 using MapResourceExplorer.UI;
+
 
 namespace MapResourceExplorer.Model
 {
@@ -41,6 +43,7 @@ namespace MapResourceExplorer.Model
             ResourceManager.Instance.ResourceService.ResourceAdded += new Autodesk.Gis.Map.Platform.ResourceAddedHandler(ResourceService_ResourceAdded);
             ResourceManager.Instance.ResourceService.ResourceRemoved += new Autodesk.Gis.Map.Platform.ResourceRemovedHandler(ResourceService_ResourceRemoved);
             ResourceManager.Instance.ResourceService.ResourceModified += new Autodesk.Gis.Map.Platform.ResourceModifiedHandler(ResourceService_ResourceModified);
+            
         }
 
         void ResourceService_ResourceModified(object sender, Autodesk.Gis.Map.Platform.AcMapResourceEventArgs args)
