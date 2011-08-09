@@ -38,11 +38,15 @@ namespace MapResourceExplorer.Model
         /// </summary>
         public void RegisterEvents()
         {
-            Application.DocumentManager.DocumentActivated += new DocumentCollectionEventHandler(DocumentManager_DocumentActivated);
+            Application.DocumentManager.DocumentActivated += 
+                new DocumentCollectionEventHandler(DocumentManager_DocumentActivated);
 
-            ResourceManager.Instance.ResourceService.ResourceAdded += new Autodesk.Gis.Map.Platform.ResourceAddedHandler(ResourceService_ResourceAdded);
-            ResourceManager.Instance.ResourceService.ResourceRemoved += new Autodesk.Gis.Map.Platform.ResourceRemovedHandler(ResourceService_ResourceRemoved);
-            ResourceManager.Instance.ResourceService.ResourceModified += new Autodesk.Gis.Map.Platform.ResourceModifiedHandler(ResourceService_ResourceModified);
+            ResourceManager.Instance.ResourceService.ResourceAdded += 
+                new Autodesk.Gis.Map.Platform.ResourceAddedHandler(ResourceService_ResourceAdded);
+            ResourceManager.Instance.ResourceService.ResourceRemoved += 
+                new Autodesk.Gis.Map.Platform.ResourceRemovedHandler(ResourceService_ResourceRemoved);
+            ResourceManager.Instance.ResourceService.ResourceModified += 
+                new Autodesk.Gis.Map.Platform.ResourceModifiedHandler(ResourceService_ResourceModified);
             
         }
 
