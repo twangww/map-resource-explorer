@@ -1,15 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-using Autodesk.AutoCAD.ApplicationServices;
-using Autodesk.AutoCAD.EditorInput;
+﻿
 using Autodesk.AutoCAD.Runtime;
-
-using MapResourceExplorer.UI;
 using Autodesk.Gis.Map.Platform.Utils;
 using MapResourceExplorer.Model;
+using MapResourceExplorer.UI;
+
+// If we do not use this attribute, your extension will be loaded, 
+// but AutoCAD Civil 3D will have to search your DLL for the extension 
+// application class, which can become very inefficient if you have 
+// a lot of types declared in your DLL.
+
+[assembly: ExtensionApplication(typeof(MapResourceExplorer.AppEntry))]
 
 namespace MapResourceExplorer
 {
@@ -23,11 +23,14 @@ namespace MapResourceExplorer
             Util.PrintLn("MapResourceExplore application initialized.");
 
             // Prompt the commands this assembly offers
+
             Commands cmd = new Commands();
             cmd.CmdListCommand();
 
             cmd.ResourceExplorerCommand();
+
             //Register Events;
+
             cmd.RegisterEvents();
         }
 
@@ -41,9 +44,10 @@ namespace MapResourceExplorer
         }
     }
 
+    [assembly: CommandClass(typeof(MapResourceExplorer.Commands))]
+
     public class Commands
     {
-
 
         [CommandMethod("CmdList")]
         public void CmdListCommand()
@@ -63,9 +67,9 @@ namespace MapResourceExplorer
         public void RegisterEvents()
         {
             EventManager.Instance.RegisterEvents();
-            
+
         }
 
-    
+
     }
 }
