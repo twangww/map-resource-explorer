@@ -54,7 +54,7 @@ namespace MapResourceExplorer
         {
             Util.PrintLn("PROMPT: MapResourceExplore commands:");
             Util.PrintLn("ShowResourceExplorer");
-            Util.PrintLn("RegisterEvents");
+            Util.PrintLn("StartListening");
         }
 
         [CommandMethod("ShowResourceExplorer")]
@@ -63,13 +63,12 @@ namespace MapResourceExplorer
             ResourceExplorerPalette.Instance.Show();
         }
 
-        [CommandMethod("RegisterEvents")]
+        [CommandMethod("StartListening")]
         public void RegisterEvents()
         {
             EventManager.Instance.RegisterEvents();
 
         }
-
 
     }
 }
