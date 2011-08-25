@@ -90,7 +90,7 @@ namespace MapResourceExplorer.Model
             XmlDocument doc = new XmlDocument();
             doc.LoadXml(resStr);
 
-            //let's extract the map names and list them        
+            //let's extract the resource names and list them        
             XmlNodeList resIdNodeList;
             XmlElement root = doc.DocumentElement;
             resIdNodeList = root.SelectNodes("//ResourceId");
