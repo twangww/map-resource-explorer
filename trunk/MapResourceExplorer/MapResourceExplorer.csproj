@@ -62,16 +62,6 @@
       <HintPath>..\..\Program Files\Autodesk\AutoCAD Map 3D 2012\acmgd.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Autodesk.Gis.Map.Command, Version=14.0.45.0, Culture=neutral, processorArchitecture=AMD64">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Program Files\Autodesk\AutoCAD Map 3D 2012\Autodesk.Gis.Map.Command.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Autodesk.Gis.Map.Shared, Version=14.0.45.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Program Files\Autodesk\AutoCAD Map 3D 2012\Autodesk.Gis.Map.Shared.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="Autodesk.Map.Platform, Version=14.0.45.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Program Files\Autodesk\AutoCAD Map 3D 2012\Autodesk.Map.Platform.dll</HintPath>
@@ -87,24 +77,14 @@
       <HintPath>..\..\Program Files\Autodesk\AutoCAD Map 3D 2012\Autodesk.Map.Platform.Utils.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="ManagedMapApi, Version=14.0.45.0, Culture=neutral, processorArchitecture=AMD64">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Program Files\Autodesk\AutoCAD Map 3D 2012\ManagedMapApi.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="OSGeo.MapGuide.Foundation, Version=2.2.0.4141, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Program Files\Autodesk\AutoCAD Map 3D 2012\OSGeo.MapGuide.Foundation.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="OSGeo.MapGuide.Geometry, Version=2.2.0.4141, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Program Files\Autodesk\AutoCAD Map 3D 2012\OSGeo.MapGuide.Geometry.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="OSGeo.MapGuide.PlatformBase, Version=2.2.0.4141, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Program Files\Autodesk\AutoCAD Map 3D 2012\OSGeo.MapGuide.PlatformBase.dll</HintPath>
+      <HintPath>..\..\Program Files\Autodesk\AutoCAD Civil 3D 2011\OSGeo.MapGuide.PlatformBase.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="PresentationCore">

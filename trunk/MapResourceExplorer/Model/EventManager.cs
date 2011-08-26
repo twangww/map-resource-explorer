@@ -1,6 +1,5 @@
 ﻿
 using Autodesk.AutoCAD.ApplicationServices;
-using Autodesk.Gis.Map.DisplayManagement;
 using MapResourceExplorer.UI;
 
 
