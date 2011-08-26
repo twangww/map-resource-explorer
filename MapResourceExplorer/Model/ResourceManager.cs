@@ -4,6 +4,7 @@ using System.Text;
 using System.Xml;
 using Autodesk.Gis.Map.Platform;
 using OSGeo.MapGuide;
+using System.Diagnostics;
 
 
 namespace MapResourceExplorer.Model
@@ -80,31 +81,43 @@ namespace MapResourceExplorer.Model
 
             Dictionary<string, string> resources = new Dictionary<string, string>();
 
-            MgResourceIdentifier rootResId = new MgResourceIdentifier(@"Library://");
-            MgByteReader reader = ResourceService.EnumerateResources(rootResId, -1, resourceType.ToString());
-
-            //Convert to string 
-            String resStr = reader.ToString();
-
-            //Load into XML document so we can parse and get the names of the maps
-            XmlDocument doc = new XmlDocument();
-            doc.LoadXml(resStr);
-
-            //let's extract the resource names and list them        
-            XmlNodeList resIdNodeList;
-            XmlElement root = doc.DocumentElement;
-            resIdNodeList = root.SelectNodes("//ResourceId");
-            int resCount = resIdNodeList.Count;
-            for (int i = 0; i < resCount; i++)
+            try
             {
-                XmlNode resIdNode = resIdNodeList.Item(i);
-                String resId = resIdNode.InnerText;
-                int index1 = resId.LastIndexOf('/') + 1;
-                int index2 = resId.IndexOf(resourceType) - 2;
-                int length = index2 - index1 + 1;
-                string resName = resId.Substring(index1, length);
-                resources.Add(resName, resId);
+                string rootPath = "Library://";
+                MgResourceIdentifier rootResId = new MgResourceIdentifier(rootPath);
+                rootResId.Validate();
 
+                MgByteReader reader = ResourceService.EnumerateResources(rootResId, -1, resourceType.ToString());
+
+                //Convert to string 
+                String resStr = reader.ToString();
+
+                //Load into XML document so we can parse and get the names of the maps
+                XmlDocument doc = new XmlDocument();
+                doc.LoadXml(resStr);
+
+                //let's extract the resource names and list them        
+                XmlNodeList resIdNodeList;
+                XmlElement root = doc.DocumentElement;
+                resIdNodeList = root.SelectNodes("//ResourceId");
+                int resCount = resIdNodeList.Count;
+                for (int i = 0; i < resCount; i++)
+                {
+                    XmlNode resIdNode = resIdNodeList.Item(i);
+                    String resId = resIdNode.InnerText;
+                    int index1 = resId.LastIndexOf('/') + 1;
+                    int index2 = resId.IndexOf(resourceType) - 2;
+                    int length = index2 - index1 + 1;
+                    string resName = resId.Substring(index1, length);
+                    resources.Add(resName, resId);
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                string msg = ex.Message;
+                Debug.WriteLine(msg);
             }
 
 
