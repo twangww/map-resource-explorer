@@ -1,0 +1,1 @@
+This tool is foucing on exploring the resources in Map 3D, to represent the resource as XML
